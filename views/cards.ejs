@@ -1,0 +1,58 @@
+<%- include("partials/header") %>
+<%- include("partials/search") %>
+    <%if (!error) { %>
+        <section id="sectionTable">
+                <table>
+                    <thead>
+                    <tr>
+                        <% columns.forEach(column => { %>
+                            <th class="<%= column.class %>">
+                                <% if (filterSearch) { %>
+                                    <a href="?filterSearch=<%= filterSearch %>&sortField=<%=column.field%>&sortDirection=<%= sortDirection === 'desc' ? 'asc' : 'desc' %>">
+                                <% } else { %>
+                                    <a href="?sortField=<%=column.field%>&sortDirection=<%= sortDirection === 'desc' ? 'asc' : 'desc' %>">
+                                <% }; %>
+                                <%= column.title %>
+                                    <% if (sortField === column.field) { %>
+                                        <% if (sortDirection === 'asc') { %>
+                                            <i class="fa-solid fa-sort-up fa-xl"></i>
+                                        <% } else { %>
+                                            <i class="fa-solid fa-sort-down fa-xl"></i>
+                                        <% } %>
+                                    <% } %>
+                                </a>
+                            </th>
+                        <% }); %>
+                        <th>Portfolio</th>
+                    </tr>
+                    
+                    </thead>
+                    <tbody>             
+                        <% for (let character of characters) { %>
+                            <tr>
+                                <td class="sectionWithImage"><img src="<%=character.profileImageUrl%>" id="profilePicInsideName"  alt=""><br><section class="sectionNameId"><p id="nameCharacter"><%=character.name%></p><p>ID: <%=character.id%></p></section></td>
+                                <td class="mobile"><%=character.age%></td>  
+                                <td class="mobile"><%=character.bounty%></td>  
+                                <td class="mobile"><%=character.position%></td>
+                                <td>
+                                    <% if(character.isOnline) {%> <p style="background-color: #10B491; border-radius: 50%; width: 20px; height: 20px;"></p> <% } else { %>
+                                     <p style="background-color: red; border-radius: 50%; width: 20px; height: 20px;"></p> <% } %>
+                                </td>  
+                                <td><a style="font-weight: bolder;" href="/onepiece/cards/<%=character.id%>">View</a></td>
+                            </tr><%
+                        }
+                        %>
+                    </tbody>
+                </table>
+            </section>
+            <% } else { %>
+                <p><%=error%></p>
+                <script>
+                    document.getElementsByTagName("main")[0].style.justifyContent = "start";
+                </script>
+            <% } %>  
+<% if(!error) { %>
+    <%- include("partials/arrowup") %>
+<% }; %>
+
+<%- include("partials/aside") %>

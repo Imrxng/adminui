@@ -1,0 +1,16 @@
+<%- include("partials/header")%>
+    <section id="sectionDetail">
+        <img src="<%=group.logo%>" alt="<%=group.name%>">
+        <article id="articleDetail">
+            <article>
+                <h3><%=group.name%></h3>
+                <p><%=group.base%></p>
+            </article>
+            <article>
+                <p><span class="beschrijving">Captain: </span><%=group.captain%> (<a href="/onepiece/cards/<%=character.id%>" class="beschrijving">view</a>) </p><br>
+                <p><span class="beschrijving">Territory: </span><%=group.territory%></p><br>
+                <p><span class="beschrijving">Total bounty: </span><%=group.totalBounty%></p><br>
+            </article>
+        </article>
+    </section>
+<%- include("partials/aside")%>

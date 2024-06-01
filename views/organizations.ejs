@@ -1,0 +1,40 @@
+<%- include("partials/header")%>
+    <%if (!error) { %>
+        <section id="sectionTable">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th class="mobile">Captain</th>
+                            <th class="mobile">Base</th>
+                            <th class="mobile">Territory</th>
+                            <th class="mobile">Total Bounty</th>                        
+                            <th>Portfolio</th>                        
+                        </tr>
+                    </thead>
+                    <tbody>             
+                        <% for (let group of groups) { %>
+                            <tr>
+                                <td class="sectionWithImage"><img src="<%=group.logo%>" id="profilePicInsideName"  alt=""><br><section class="sectionNameId"><p id="nameCharacter"><%=group.name%></p><p>ID: <%=group.id%></p></section></td>
+                                <td class="mobile"><%=group.captain%></td>
+                                <td class="mobile">
+                                    <% if(group.base === null) { %>
+                                        Unknown
+                                    <% } else { %>
+                                        <%=group.territory%>
+                                    <% } %>
+                                </td>    
+                                <td class="mobile"><%=group.territory%></td>  
+                                <td class="mobile"><%=group.totalBounty%></td>
+                                <td><a style="font-weight: bolder;" href="/onepiece/organizations/<%=group.id%>">View</a></td>
+                            </tr><%
+                        }
+                        %>
+                    </tbody>
+                </table>
+        </section>
+    <% } else { %>
+        <p><%=error%></p>
+    <% } %>  
+<%- include("partials/arrowup") %>
+<%- include("partials/aside")%>

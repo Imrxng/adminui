@@ -1,0 +1,36 @@
+</main>
+<aside>
+    <img src="/assets/images/onepiecelogo.png" alt="logo">
+    <a href="/onepiece/cards">
+        <section class="iconsAside">
+            <i class="fa-solid fa-house  fa-xl"></i>
+            <p>Home</p>
+        </section>
+    </a>
+   <a href="/onepiece/cards">
+    <section class="iconsAside <% if(url === 'cards') { %> active <% } %>">
+        <i class="fa-solid fa-rectangle-list  fa-xl"></i>
+            <p>Cards</p>
+        </section>
+   </a>
+    <a href="/onepiece/organizations">
+        <section class="iconsAside <% if(url === 'organizations') { %> active <% } %>">
+            <i class="fa-solid fa-jedi fa-xl"></i>
+            <p>Organizations</p>
+        </section>
+    </a>
+    <% if (user.role === "ADMIN") { %>
+        <section class="iconsAside <% if(url === 'users') { %> active <% } %>">
+            <i class="fa-regular fa-user  fa-xl"></i>
+            <p>Users</p>
+        </section>
+    <% }; %>
+    <a href="/logout">
+        <section class="iconsAside">
+            <i class="fa-solid fa-right-from-bracket  fa-xl"></i>
+            <p>Log out</p>
+        </section>
+    </a>
+</aside>
+</body>
+</html>

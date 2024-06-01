@@ -1,0 +1,32 @@
+<%- include("partials/header")%>
+    <section id="sectionDetail">
+        <img src="<%=character.profileImageUrl%>" alt="<%=character.name%>">
+        <article id="articleDetail">
+            <article>
+                <h3><%=character.name%></h3>
+                <p><%=character.description%></p>
+            </article>
+            <article>
+                <p><span class="beschrijving">Age: </span><%=character.age%></p><br>
+                <% if(character.devilFruit) { %>
+                    <p><span class="beschrijving">Devil Fruit: </span><%=character.devilFruit%></p><br>
+                <% }; %>
+                <p><span class="beschrijving">Bounty: </span><%=character.bounty%></p><br>
+                <p><span class="beschrijving">Entry date: </span><%=character.entryDate%></p><br>
+                <p>
+                    <span class="beschrijving">Hobbies: </span><% for(let i = 0; i < character.hobbies.length; i++) { %>
+                        <%=character.hobbies[i]%>
+                        <% if(i < character.hobbies.length - 1) { %>
+                            ,
+                        <% }; %>
+                    <% }; %>
+                </p><br>
+                <p><span class="beschrijving">Position: </span><%=character.position%></p><br>
+                <p><span class="beschrijving">Organization: </span><%=character.group.name%> (<a href="/onepiece/organizations/<%=character.group.id%>" class="beschrijving" id="linkToGroup">view</a>)</p><br>
+                <% if (user.role === "ADMIN") { %>
+                    <a href="/onepiece/cards/<%=character.id%>/edit"><p><i class="fa-solid fa-pen-to-square"></i> Edit</p></a>
+                <% }; %>
+            </article>
+        </article>
+    </section>
+<%- include("partials/aside")%>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="nl-BE">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Piece | admin</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/assets/icons/pirateskull.svg" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/d59bc2ea1d.js" crossorigin="anonymous"></script>
+    <script>
+       document.addEventListener("DOMContentLoaded", function() {
+        const burgerOpen = document.getElementById("bars-open");
+        const burgerClose = document.getElementById("bars-close");
+        const popup = document.getElementById("popup");
+
+        burgerOpen.addEventListener("click", function() {
+            popup.style.visibility = "visible";
+            popup.style.display = "block";
+            burgerOpen.style.display = "none";
+            burgerClose.style.display = "block";
+        });
+        burgerClose.addEventListener("click", function() {
+            if (popup.style.visibility === "visible") {
+                popup.style.visibility = "hidden";
+                popup.style.display = "none";
+                burgerOpen.style.display = "block";
+                burgerClose.style.display = "none";
+            };
+        });
+        const mobiles = document.getElementsByClassName("mobile");
+        const screenwidth = window.innerWidth;
+            if (screenwidth <= 825) {
+                for (const mobile of mobiles) {
+                    mobile.style.display = "none";  
+                };
+            };
+        window.addEventListener("resize", function () {
+            const screenwidth = window.innerWidth;
+            if (screenwidth <= 825) {
+                for (const mobile of mobiles) {
+                    mobile.style.display = "none";  
+                };
+            } else {
+                popup.style.visibility = "hidden";
+                popup.style.display = "none";
+                burgerOpen.style.display = "block";
+                burgerClose.style.display = "none";
+            };
+        });
+       });
+    </script>
+</head>
+<body id="top">
+    <i class="fa-solid fa-bars" id="bars-open"></i>
+    <div id="popup">
+        <i class="fa-solid fa-bars" id="bars-close"></i>
+        <a href="/onepiece/cards">
+            <section class="iconsAside">
+                <i class="fa-solid fa-house  fa-xl"></i>
+                <p>Home</p>
+            </section>
+        </a>
+       <a href="/onepiece/cards">
+        <section class="iconsAside <% if(url === 'cards') { %> active <% } %>">
+            <i class="fa-solid fa-rectangle-list  fa-xl"></i>
+                <p>Cards</p>
+            </section>
+       </a>
+        <a href="/onepiece/organizations">
+            <section class="iconsAside <% if(url === 'organizations') { %> active <% } %>">
+                <i class="fa-solid fa-jedi fa-xl"></i>
+                <p>Organizations</p>
+            </section>
+        </a>
+        <section class="iconsAside <% if(url === 'users') { %> active <% } %>">
+            <i class="fa-regular fa-user  fa-xl"></i>
+            <p>Users</p>
+        </section>
+        <a href="/onepiece/login">
+            <section class="iconsAside">
+                <i class="fa-solid fa-right-from-bracket  fa-xl"></i>
+                <p>Log out</p>
+            </section>
+        </a>
+    </div>
+    <main>
+

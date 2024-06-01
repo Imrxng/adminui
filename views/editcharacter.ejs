@@ -1,0 +1,32 @@
+<%- include("partials/header")%>
+    <section id="sectionDetail">
+        <a href="/onepiece/cards/<%= character.id %>"><i style="font-size: 3rem;" class="fa-regular fa-circle-xmark "></i></a>
+        <img src="<%=character.profileImageUrl%>" alt="<%=character.name%>">
+        <article>
+            <h3><%=character.name%></h3>
+            <p><%=character.description%></p>
+        </article>
+        <article id="articleDetail">
+            <article>
+                <form action="/onepiece/cards/<%=character.id%>/edit" method="post">
+                    <label for="age" ><span class="beschrijving">Age: </span></label>
+                    <input type="number" name="age" id="age" value="<%=character.age%>"><br><br>
+                    <label for="bounty" ><span class="beschrijving">Bounty: </span></label>
+                    <input type="number" name="bounty" id="bounty" value="<%=character.bounty%>"><br><br>
+                    <label for="entrydate" ><span class="beschrijving">Entry date: </span></label>
+                    <input type="text" name="entryDate" id="entryDate" value="<%=character.entryDate%>"><br><br>
+                    <label for="organization" ><span class="beschrijving">Position: </span></label>
+                    <select name="position" id="position">
+                        <% for (const position of positions) { %>
+                            <option value="<%= position %>" <% if (character.position === position) { %> selected <% }; %>> <%= position %></option>
+                        <% } %>
+                    </select><br><br><br>
+                    <button>Save</button>
+                    <input type="number" name="id" id="id" value="<%=character.id%>" style="visibility: hidden;">
+                </form>
+
+               
+            </article>
+        </article>
+    </section>
+<%- include("partials/aside")%>
